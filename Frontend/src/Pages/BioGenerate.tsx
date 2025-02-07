@@ -26,8 +26,10 @@ const BioGenerate = () => {
     if(result.status !== 200){
       toast.error("An error occurred while generating the bio.")
       return;
+    }else{
+      setGeneratedBio(result.data.data);
+      toast.success(' Bio successfully generated')
     }
-    setGeneratedBio(result.data.data);
     setIsGenerating(false);
   };
 
