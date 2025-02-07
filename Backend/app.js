@@ -23,7 +23,7 @@ if(!process.env.API_KEY){
     console.error("API_KEY not found. Please set it up in your.env file.");
 }
 
-app.post('/api/generate', async (req, res) => {
+app.post('/generate', async (req, res) => {
     const { prompt } = req.body;
     
     const result = await together.chat.completions.create({
