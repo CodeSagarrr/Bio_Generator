@@ -9,11 +9,8 @@ dotenv.config();
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());
 app.use(cors({
-    origin: 'https://bio-generator-ai.vercel.app/',
-    methods: 'GET, POST',
-    allowedHeaders: 'Origin, X-Requested-With, Content-Type, Accept, Authorization',
-    credentials: true, // allow session cookies
-  
+    origin: '*',
+    credentials: true, // allow session cookies  
 }));
 app.use(morgan("dev"));
 
@@ -23,7 +20,7 @@ if(!process.env.API_KEY){
     console.error("API_KEY not found. Please set it up in your.env file.");
 }
 
-app.post('/generate', async (req, res) => {
+app.post('/api/generate', async (req, res) => {
     const { prompt } = req.body;
     
     const result = await together.chat.completions.create({

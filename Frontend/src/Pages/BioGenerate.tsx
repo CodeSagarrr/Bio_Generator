@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import { Sparkles, Copy, RefreshCw } from 'lucide-react';
 import { toast } from "react-hot-toast";
 import axios from 'axios';
@@ -10,14 +10,7 @@ const BioGenerate = () => {
   const [generatedBio, setGeneratedBio] = useState('');
   const [isGenerating, setIsGenerating] = useState(false);
 
-  const ref = useRef<HTMLDivElement | null>(null);
-
-  const bioController = () => {
-    if (ref.current !== null) {
-      ref.current.scrollIntoView({ behavior: 'smooth' });
-    }
-  }
-
+  
   const prompt = `Generate a personalized social media bio for a user based on the following information: Name: ${name}, Profession: ${profession}, Interests & Skills: ${interests}. The bio should be concise, engaging, and reflect the user's personality and expertise in their field. The bio should be under 300 characters, with short sentences suitable for a social media bio, and it should not include any hashtags and only return one line intro of his name like myself and name and social media bio information add | this symbol.`;
 
   const generateBio = async (e: React.FormEvent) => {
@@ -35,10 +28,7 @@ const BioGenerate = () => {
       return;
     }
     setGeneratedBio(result.data.data);
-
-    bioController();
     setIsGenerating(false);
-
   };
 
   const copyToClipboard = () => {
@@ -124,7 +114,7 @@ const BioGenerate = () => {
 
           {/* Generated Bio Display */}
           <div className="space-y-6">
-            <div ref={ref} className="bg-gray-900/50 p-6 rounded-xl min-h-[200px] flex flex-col" >
+            <div className="bg-gray-900/50 p-6 rounded-xl min-h-[200px] flex flex-col" >
               <h3 className="font-['Signika'] text-xl font-bold mb-2">Your Generated <span className="text-sky-300">Bio</span></h3>
               <p className=" text-gray-300 flex-grow" >
                 {generatedBio || "Your generated bio will appear here..."}
