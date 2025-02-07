@@ -6,7 +6,7 @@ import tailwindcss from '@tailwindcss/vite'
 export default defineConfig({
   server :{
     proxy : {
-      "/api": "https://social-media-bio-generator-ai.onrender.com"
+      "/api": "https://social-media-bio-generator.vercel.app"
     }
   },
   plugins: [react() , tailwindcss()],
