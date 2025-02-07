@@ -9,7 +9,7 @@ dotenv.config();
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());
 app.use(cors({
-    origin: '*',
+    origin: 'https://bio-generator-ai.vercel.app/',
     methods: 'GET, POST',
     allowedHeaders: 'Origin, X-Requested-With, Content-Type, Accept, Authorization',
     credentials: true, // allow session cookies
