@@ -28,7 +28,7 @@ const BioGenerate = () => {
       return;
     }else{
       setGeneratedBio(result.data.data);
-      toast.success(' Bio successfully generated')
+      toast.success('Bio successfully generated');
     }
     setIsGenerating(false);
   };
