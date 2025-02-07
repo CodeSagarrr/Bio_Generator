@@ -8,7 +8,13 @@ const app = express();
 dotenv.config();
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+    origin: '*',
+    methods: 'GET, POST',
+    allowedHeaders: 'Origin, X-Requested-With, Content-Type, Accept, Authorization',
+    credentials: true, // allow session cookies
+  
+}));
 app.use(morgan("dev"));
 
 const together = new Together({apiKey: process.env.API_KEY});
