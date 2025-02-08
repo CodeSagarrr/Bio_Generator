@@ -22,7 +22,7 @@ const BioGenerate = () => {
     setGeneratedBio("")
     setIsGenerating(true);
 
-    const result: any = await axios.post("/api/generate", { prompt: prompt})
+    const result: any = await axios.post("/user/api/generate", { prompt: prompt})
     if(result.status !== 200){
       toast.error("An error occurred while generating the bio.")
       return;
