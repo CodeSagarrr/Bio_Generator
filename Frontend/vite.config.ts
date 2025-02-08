@@ -14,4 +14,3 @@ export default defineConfig({
     exclude: ['lucide-react']  
   }
 })
-// https://social-media-bio-generator-7pna.onrender.com

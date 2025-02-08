@@ -6,27 +6,31 @@ import morgan from "morgan";
 
 const app = express();
 dotenv.config();
-app.use(express.urlencoded({extended: true}));
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors());
 app.use(morgan("dev"));
 
-const together = new Together({apiKey: process.env.API_KEY});
+const together = new Together({ apiKey: process.env.API_KEY });
 
-if(!process.env.API_KEY){
+if (!process.env.API_KEY) {
     console.error("API_KEY not found. Please set it up in your.env file.");
 }
 
 app.post('/api/generate', async (req, res) => {
-    const { prompt } = req.body;
-    
-    const result = await together.chat.completions.create({
-        model : "meta-llama/Meta-Llama-3.1-405B-Instruct-Turbo", 
-        messages : [ { "role" : "user" , content : prompt}],
-        temperature : 0.7,
-    })
+    try {
+        const { prompt } = req.body;
 
-    return res.status(200).json({data : result.choices[0].message.content , msg:"success"});
+        const result = await together.chat.completions.create({
+            model: "meta-llama/Meta-Llama-3.1-405B-Instruct-Turbo",
+            messages: [{ "role": "user", content: prompt }],
+            temperature: 0.7,
+        })
+
+        return res.status(200).json({ data: result.choices[0].message.content, msg: "success" });
+    } catch (error) {
+        console.log(error.message)
+    }
 })
 
 
