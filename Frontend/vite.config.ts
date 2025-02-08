@@ -4,11 +4,11 @@ import tailwindcss from '@tailwindcss/vite'
 
 // https://vite.dev/config/
 export default defineConfig({
-  server :{
-    proxy : {
-      "/api": "https://social-media-bio-generator-19hd.onrender.com"
-    }
-  },
+ server : {
+  proxy : {
+    "/api" : "https://bio-generator-dtwr.onrender.com"
+  }
+ },
   plugins: [react() , tailwindcss()],
   optimizeDeps : {
     exclude: ['lucide-react']  
