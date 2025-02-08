@@ -2,10 +2,6 @@ import React, { useState } from 'react';
 import { Sparkles, Copy, RefreshCw } from 'lucide-react';
 import { toast } from "react-hot-toast";
 import axios from 'axios';
-import dotenv from "dotenv";
-
-
-dotenv.config();
 
 const BioGenerate = () => {
   const [name, setName] = useState('');
@@ -26,12 +22,12 @@ const BioGenerate = () => {
     setGeneratedBio("")
     setIsGenerating(true);
 
-    const result: any = await axios.post(`${process.env.URL_PATH}/api/generate`, { prompt: prompt })
-    if (result.status !== 200) {
+    const res = await axios.post(`/api/generate`, { prompt: prompt })
+    if (res.status !== 200) {
       toast.error("An error occurred while generating the bio.")
       return;
     } else {
-      setGeneratedBio(result.data.data);
+      setGeneratedBio(res.data.data);
       toast.success('Bio successfully generated');
     }
     setIsGenerating(false);
