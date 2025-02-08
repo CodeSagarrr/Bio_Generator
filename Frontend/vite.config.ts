@@ -6,7 +6,7 @@ import tailwindcss from '@tailwindcss/vite'
 export default defineConfig({
   server :{
     proxy : {
-      "/api": "https://social-media-bio-generator-7pna.onrender.com"
+      "/api": "http://localhost:8080"
     }
   },
   plugins: [react() , tailwindcss()],
@@ -14,3 +14,4 @@ export default defineConfig({
     exclude: ['lucide-react']  
   }
 })
+// https://social-media-bio-generator-7pna.onrender.com
