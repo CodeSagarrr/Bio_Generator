@@ -25,6 +25,7 @@ app.post('/api/generate', async (req, res) => {
             model: "meta-llama/Meta-Llama-3.1-405B-Instruct-Turbo",
             messages: [{ "role": "user", content: prompt }],
             temperature: 0.7,
+            max_tokens: 400,
         })
 
         return res.status(200).json({ data: result.choices[0].message.content, msg: "success" });
