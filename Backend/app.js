@@ -27,8 +27,7 @@ app.post('/api/generate', async (req, res) => {
             temperature: 0.7,
             max_tokens: 400,
         })
-
-        return res.status(200).json({ data: result.choices[0].message.content, msg: "success" });
+        res.status(200).json({ data: result.choices[0].message.content, msg: "success" });
     } catch (error) {
         console.log(error.message)
     }
