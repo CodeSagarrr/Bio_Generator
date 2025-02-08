@@ -17,6 +17,10 @@ if (!process.env.API_KEY) {
     console.error("API_KEY not found. Please set it up in your.env file.");
 }
 
+app.get('/api/get' , (req,res) => {
+    res.send("Hello From Server")
+})
+
 app.post('/api/generate', async (req, res) => {
     try {
         const { prompt } = req.body;
