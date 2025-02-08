@@ -8,7 +8,7 @@ const app = express();
 dotenv.config();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(cors());
+app.use(cors({ origin : "https://bio-generator-ruddy.vercel.app/" }));
 app.use(morgan("dev"));
 
 const together = new Together({ apiKey: process.env.API_KEY });
