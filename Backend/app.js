@@ -35,7 +35,7 @@ app.post('/api/generate', async (req, res) => {
 
 
 const port = process.env.PORT || 8000;
-app.listen(port, () => console.log(`Server listening on port : http://localhost:${port} `))
+app.listen(port, () => console.log(`Server listening on port :${port} `))
 
 
 
