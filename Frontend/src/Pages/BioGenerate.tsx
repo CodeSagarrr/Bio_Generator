@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Sparkles, Copy, RefreshCw } from 'lucide-react';
 import { toast } from "react-hot-toast";
-import axios from 'axios';
+import { getData } from '../api/api.tsx'
 
 const BioGenerate = () => {
   const [name, setName] = useState('');
@@ -22,14 +22,15 @@ const BioGenerate = () => {
     setGeneratedBio("")
     setIsGenerating(true);
 
-    const res = await axios.post(`/api/generatebio`, { text : prompt })
-    if (res.status !== 200) {
+    const response = await getData(prompt);
+    if (!response) {
       toast.error("An error occurred while generating the bio.")
       return;
-    } else {
-      setGeneratedBio(res.data.data);
-      toast.success('Bio successfully generated');
+    }else{
+      toast.success("Generated Successfully");
+      setGeneratedBio(response);
     }
+    
     setIsGenerating(false);
   };
 
@@ -52,7 +53,7 @@ const BioGenerate = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           {/* Input Form */}
-          <form  onSubmit={generateBio} className="space-y-6">
+          <form onSubmit={generateBio} className="space-y-6">
             <div>
               <label htmlFor="name" className="block font-['Signika'] text-sm font-medium mb-2">
                 Your Name
@@ -96,7 +97,7 @@ const BioGenerate = () => {
             </div>
 
             <button
-             type='submit'
+              type='submit'
               disabled={isGenerating}
               className="w-full bg-sky-300 text-black  font-semibold px-8 py-4 rounded-full hover:bg-sky-400 transition-colors flex items-center justify-center space-x-2 disabled:opacity-50"
             >
