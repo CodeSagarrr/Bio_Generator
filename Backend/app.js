@@ -8,7 +8,7 @@ dotenv.config();
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 const corOption = {
-    origin: 'https://bio-generator-three.vercel.app/',
+    origin: 'https://bio-generator-6s6a06f3c-sagars-projects-b40c2bde.vercel.app/',
     methods: 'GET, POST',
     credentials: true,
     optionsSuccessStatus: 200
