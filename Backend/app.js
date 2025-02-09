@@ -11,7 +11,7 @@ const corOption = {
     origin: 'https://bio-generator-three.vercel.app/',
     methods: 'GET, POST',
     credentials: true,
-    optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+    optionsSuccessStatus: 200 
 }
 app.use(cors(corOption));
 
@@ -25,7 +25,7 @@ app.get('/api/get' , (req,res) => {
     res.send("Hello From Server")
 })
 
-app.post('/api/generate', async (req, res) => {
+app.post('/api/generatebio', async (req, res) => {
     try {
         const { prompt } = req.body;
 
