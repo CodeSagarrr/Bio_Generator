@@ -11,7 +11,7 @@ const corOption = {
     origin: 'https://bio-generator-three.vercel.app/',
     methods: 'GET, POST',
     credentials: true,
-    optionsSuccessStatus: 200 
+    optionsSuccessStatus: 200
 }
 app.use(cors(corOption));
 
@@ -21,14 +21,13 @@ if (!process.env.API_KEY) {
     console.error("API_KEY not found. Please set it up in your.env file.");
 }
 
-app.get('/api/get' , (req,res) => {
+app.get('/api/get', (req, res) => {
     res.send("Hello From Server")
 })
 
 app.post('/api/generatebio', async (req, res) => {
+    const { prompt } = req.body;
     try {
-        const { prompt } = req.body;
-
         const result = await together.chat.completions.create({
             model: "meta-llama/Meta-Llama-3.1-70B-Instruct-Turbo",
             messages: [{ "role": "user", content: prompt }],
