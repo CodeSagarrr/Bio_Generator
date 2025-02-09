@@ -7,7 +7,13 @@ const app = express();
 dotenv.config();
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
-app.use(cors());
+const corOption = {
+    origin: 'https://bio-generator-three.vercel.app/',
+    methods: 'GET, POST',
+    credentials: true,
+    optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+}
+app.use(cors(corOption));
 
 const together = new Together({ apiKey: process.env.API_KEY });
 
