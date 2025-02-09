@@ -11,7 +11,7 @@ const BioGenerate = () => {
   const [isGenerating, setIsGenerating] = useState(false);
 
 
-  const prompt = `Generate a personalized social media bio for a user based on the following information: Name: ${name}, Profession: ${profession}, Interests & Skills: ${interests}. The bio should be concise, engaging, and reflect the user's personality and expertise in their field. The bio should be under 300 characters, with short sentences suitable for a social media bio, and it should not include any hashtags and only return one line intro of his name like myself and name and social media bio information add | this symbol.`;
+  const prompt = `Generate a personalized social media bio for a user based on the following information: Name: ${name}, Profession: ${profession}, Interests & Skills: ${interests}. The bio should be concise, engaging, and reflect the user's personality and expertise in their field. The bio should be under 400 characters, with short sentences suitable for a social media bio, and it should not include any hashtags and only return one line intro of his name like myself and name and social media bio information and maximum 4 line bio and add | this symbol  .`;
 
   const generateBio = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -52,7 +52,7 @@ const BioGenerate = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           {/* Input Form */}
-          <form className="space-y-6">
+          <form  onSubmit={generateBio} className="space-y-6">
             <div>
               <label htmlFor="name" className="block font-['Signika'] text-sm font-medium mb-2">
                 Your Name
@@ -96,7 +96,7 @@ const BioGenerate = () => {
             </div>
 
             <button
-              onClick={generateBio}
+             type='submit'
               disabled={isGenerating}
               className="w-full bg-sky-300 text-black  font-semibold px-8 py-4 rounded-full hover:bg-sky-400 transition-colors flex items-center justify-center space-x-2 disabled:opacity-50"
             >

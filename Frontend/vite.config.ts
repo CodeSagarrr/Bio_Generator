@@ -6,7 +6,7 @@ import tailwindcss from '@tailwindcss/vite'
 export default defineConfig({
  server : {
   proxy : {
-    "/api" : "https://bio-generator-dtwr.onrender.com"
+    "/api" : "http://localhost:8080"
   }
  },
   plugins: [react() , tailwindcss()],

@@ -2,14 +2,12 @@ import express from 'express';
 import dotenv from 'dotenv'
 import Together from "together-ai";
 import cors from 'cors'
-import morgan from "morgan";
 
 const app = express();
 dotenv.config();
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
-app.use(cors({ origin : "https://bio-generator-ruddy.vercel.app/" }));
-app.use(morgan("dev"));
+app.use(cors());
 
 const together = new Together({ apiKey: process.env.API_KEY });
 
@@ -26,7 +24,7 @@ app.post('/api/generate', async (req, res) => {
         const { prompt } = req.body;
 
         const result = await together.chat.completions.create({
-            model: "meta-llama/Meta-Llama-3.1-405B-Instruct-Turbo",
+            model: "meta-llama/Meta-Llama-3.1-70B-Instruct-Turbo",
             messages: [{ "role": "user", content: prompt }],
             temperature: 0.7,
             max_tokens: 400,
