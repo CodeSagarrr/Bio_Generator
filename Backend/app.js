@@ -26,11 +26,11 @@ app.get('/api/get', (req, res) => {
 })
 
 app.post('/api/generatebio', async (req, res) => {
-    const { prompt } = req.body;
+    const { text } = req.body;
     try {
         const result = await together.chat.completions.create({
             model: "meta-llama/Meta-Llama-3.1-70B-Instruct-Turbo",
-            messages: [{ "role": "user", content: prompt }],
+            messages: [{ "role": "user", content: text }],
             temperature: 0.7,
             max_tokens: 400,
         })
