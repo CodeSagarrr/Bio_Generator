@@ -11,7 +11,7 @@ const BioGenerate = () => {
   const [isGenerating, setIsGenerating] = useState(false);
 
 
-  const prompt = `Generate a personalized social media bio for a user and add emojies to relate them or based on the following information: Name: ${name}, Profession: ${profession}, Interests & Skills: ${interests}. The bio should be concise, engaging, and reflect the user's personality and expertise in their field. The bio should be under 400 characters, with short sentences suitable for a social media bio, and it should not include any hashtags and only return one line intro of his name like myself and name and social media bio information and maximum 4 line bio and add | this symbol  .`;
+  const prompt = `Generate a concise and engaging social media bio with emojis based on the following details: Name: ${name}, Profession: ${profession}, Interests & Skills: ${interests}. The bio should reflect the user's personality and expertise, be under 400 characters, and formatted in a maximum of four short sentences. Include a one-line self-introduction (e.g., 'Myself [Name]') followed by the bio, separated by ' | ' symbols. Do not include hashtags..`;
 
   const generateBio = async (e: React.FormEvent) => {
     e.preventDefault();
